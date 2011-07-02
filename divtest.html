@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Swap Test</title>
+
+	<script type="text/javascript" src="http://www.google.com/jsapi"></script>
+	<script type="text/javascript">
+		google.load('prototype', '1.6');
+		google.setOnLoadCallback(init);
+
+		function init()
+		{
+			var bigdiv = $('bigdiv');
+			//bigdiv.innerText = $('d0').pic;
+			//bigdiv.setStyle( { 'backgroundColor':$('d0').getStyle('backgroundColor') });
+
+			$$('.thumbnail').each(function(item) {
+				item.observe('click', function(event) {
+					var color = item.getStyle('backgroundColor');
+					var pic = item.readAttribute('pic');
+					$('bigpic').writeAttribute('src', pic);
+					$('bigpic').writeAttribute('alt', pic);
+					$('bigpic').writeAttribute('title', pic);
+					$('caption').innerText = pic;
+				});
+			});
+		}
+	</script>
+	<style type="text/css">
+		#bigdiv { background-color:#eee; border:1px solid #000; margin:3px; padding:3px; height:200px; width:280px; }
+		.thumbnail { background-color:#eee; border:1px solid #777; margin:3px; padding:3px; height:100px; width:140px; float:left; cursor:pointer; }
+		#caption { font:8pt sans-serif; margin:3px; padding:3px; }
+		.heading { font:8pt sans-serif; margin:3px; }
+		.img-container { margin:5px; padding: 3px; }
+	</style>
+</head>
+<body>
+	<div id="bigdiv" class="">
+		<img id="bigpic" src="Desert.jpg" alt="Desert.jpg" title="Desert.jpg" height="200" width="280" />
+	</div>
+	<div id="caption">
+		Desert.jpg
+	</div>
+
+	<hr />
+	<div class="heading">Click to view larger size</div>
+	<div class="container">
+		<div id="d4" class="thumbnail" pic="Desert.jpg"><img src="Desert.jpg" height="100" width="140" /></div>
+		<div id="d5" class="thumbnail" pic="Lighthouse.jpg"><img src="Lighthouse.jpg" height="100" width="140" /></div>
+		<div id="d6" class="thumbnail" pic="Koala.jpg"><img src="Koala.jpg" height="100" width="140" /></div>
+		<div style="clear:both;">&nbsp;</div>
+	</div>
+
+	<script type="text/javascript">
+	</script>
+</body>
+</html>
